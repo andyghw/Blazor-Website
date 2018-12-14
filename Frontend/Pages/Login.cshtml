@@ -1,0 +1,40 @@
+﻿@page "/login"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+@inject Blazored.Storage.ILocalStorage localStorage
+
+
+<div class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus bind="@email" />
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required bind="@password" />
+    <button class="btn btn-lg btn-primary btn-block" onclick=@(async () => await login())>Sign in</button>
+    <br>
+    <a href="http://localhost:5000/api/Viewer/LinkedInLogin">
+        <img src="https://www.hotelhero.tech/assets/linkedinlogin-9672b9f87722274cc7824e0aec25ea257100b9475e8aa12296e7d5d428a992e3.png" width="200" height="50">
+    </a>
+</div>
+
+@functions{
+    [Parameter]
+    private string email { set; get; }
+    [Parameter]
+    private string password { set; get; }
+
+    public async Task login()
+    {
+        var response = await Http.PostAsync("http://localhost:5000/api/Viewer/Login?email=" + email + "&password=" + password, null).ConfigureAwait(false);
+        var str = await response.Content.ReadAsStringAsync();
+        if (str != null)
+        {
+            Debug.WriteLine(str);
+            User user =Json.Deserialize<User>(str);
+            await localStorage.SetItem("username", user.Username);
+            await localStorage.SetItem("email", user.Email);
+            UriHelper.NavigateTo("/nav");
+            UriHelper.NavigateTo("/");
+        }
+    }
+}

@@ -1,0 +1,45 @@
+C:\Users\andyg\.nuget\packages\blazoredlocalstorage\0.3.1\lib\netstandard2.0\Blazored.LocalStorage.dll
+C:\Users\andyg\.nuget\packages\cloudcrate.aspnetcore.blazor.browser.storage\0.5.1\lib\netstandard2.0\Cloudcrate.AspNetCore.Blazor.Browser.Storage.dll
+C:\Users\andyg\.nuget\packages\google.apis\1.36.1\lib\netstandard2.0\Google.Apis.dll
+C:\Users\andyg\.nuget\packages\google.apis.auth\1.36.1\lib\netstandard2.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\andyg\.nuget\packages\google.apis.auth\1.36.1\lib\netstandard2.0\Google.Apis.Auth.dll
+C:\Users\andyg\.nuget\packages\google.apis.core\1.36.1\lib\netstandard2.0\Google.Apis.Core.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.blazor\0.7.0\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.blazor.browser\0.7.0\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.Browser.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.blazor.build\0.7.0\lib\netstandard1.0\Microsoft.AspNetCore.Blazor.TagHelperWorkaround.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.cryptography.internal\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.dataprotection\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.DataProtection.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.dataprotection.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.hosting.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.hosting.server.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.http.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.http.extensions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.http.features\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.session\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Session.dll
+C:\Users\andyg\.nuget\packages\microsoft.aspnetcore.webutilities\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.caching.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.configuration.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.dependencyinjection\2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.fileproviders.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.hosting.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.logging.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.options\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll
+C:\Users\andyg\.nuget\packages\microsoft.extensions.primitives\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll
+C:\Users\andyg\.nuget\packages\microsoft.jsinterop\0.7.0\lib\netstandard2.0\Microsoft.JSInterop.dll
+C:\Users\andyg\.nuget\packages\microsoft.net.http.headers\2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.win32.registry\4.5.0\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+C:\Users\andyg\.nuget\packages\mono.webassembly.interop\0.7.0\lib\netstandard2.0\Mono.WebAssembly.Interop.dll
+C:\Users\andyg\.nuget\packages\newtonsoft.json\12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.buffers\4.5.0\lib\netstandard2.0\System.Buffers.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.componentmodel.annotations\4.5.0\lib\netstandard2.0\System.ComponentModel.Annotations.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.memory\4.5.1\lib\netstandard2.0\System.Memory.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.numerics.vectors\4.4.0\lib\netstandard2.0\System.Numerics.Vectors.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.runtime.compilerservices.unsafe\4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.security.accesscontrol\4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll
+C:\Users\andyg\.nuget\packages\system.security.cryptography.cng\4.4.0\lib\netstandard2.0\System.Security.Cryptography.Cng.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.security.cryptography.pkcs\4.5.0\lib\netstandard2.0\System.Security.Cryptography.Pkcs.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.security.cryptography.xml\4.5.0\lib\netstandard2.0\System.Security.Cryptography.Xml.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.security.permissions\4.5.0\lib\netstandard2.0\System.Security.Permissions.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.security.principal.windows\4.5.0\lib\netstandard2.0\System.Security.Principal.Windows.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.text.encodings.web\4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll

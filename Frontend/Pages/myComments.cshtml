@@ -1,0 +1,56 @@
+﻿@page "/comments"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+@inject Blazored.Storage.ILocalStorage localStorage
+
+@if (comments == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="my-3 p-3 bg-white rounded shadow-sm comments">
+        <h6 class="border-bottom border-gray pb-2 mb-0">My Comments</h6>
+        @foreach (var comment in comments)
+        {
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <img src="http://www.icons101.com/icon_png/size_512/id_29125/tomato.png" width="32" height="32" alt="" class="mr-2 rounded">
+                    <a class="d-block" style="font-size:30px;" href="/movie/@comment.movieName">@comment.movieName</a>
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-gray-dark" style="font-size:30px; color:blue">@@@comment.username</strong>
+                        <button class="btn btn-danger" onclick="@( () =>DeleteComment(comment.commentID))">Delete</button>
+                    </div>
+                    <br>
+                    <span class="d-block" style="font-size:20px; color:black">@comment.text</span>
+                    <br>
+                    <span class="d-block" style="font-size:25px">Rating: @comment.rating</span>
+                    <br>
+                    <span class="d-block">Date: @comment.createDate.ToString("d")</span>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@functions{
+    private List<Comment> comments;
+
+    protected override async Task OnInitAsync()
+    {
+        var username = await localStorage.GetItem<string>("username");
+        var response = await Http.GetAsync("http://localhost:5000/api/Comments/GetCommentsByV/" + username);
+        var str = await response.Content.ReadAsStringAsync();
+        if (str != null)
+        {
+            comments = Json.Deserialize<List<Comment>>(str);
+        }
+    }
+
+    public async Task DeleteComment(int id)
+    {
+        await Http.DeleteAsync("http://localhost:5000/api/Comments/DeleteComment/" + id);
+        UriHelper.NavigateTo("/");
+        UriHelper.NavigateTo("/comments");
+    }
+}

@@ -1,0 +1,43 @@
+﻿@page "/LinkedInAuth"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+@inject Blazored.Storage.ILocalStorage localStorage
+
+@username
+@email
+
+@functions{
+    private string username { get; set; }
+    private string email { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        RefreshType();
+        UriHelper.OnLocationChanged += OnLocationChanges;
+        var response = await Http.PostAsync("http://localhost:5000/api/Viewer/Validate?email=" + email + "&username=" + username, null);
+        Debug.WriteLine(response.StatusCode);
+        if (response.StatusCode != HttpStatusCode.OK)
+        {
+            await Http.PostAsync("http://localhost:5000/api/Viewer/Register?email=" + email + "&username=" + username+"&password=None", null);
+        }
+        await localStorage.SetItem("username", username);
+        await localStorage.SetItem("email", email);
+        UriHelper.NavigateTo("/nav");
+        UriHelper.NavigateTo("/");
+    }
+
+    private void OnLocationChanges(object sender, string location) => RefreshType();
+
+    private void RefreshType()
+    {
+        var uri = new Uri(UriHelper.GetAbsoluteUri());
+        username = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("username", out var type) ? type.First() : "";
+        email = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("email", out var type2) ? type2.First() : "";
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        UriHelper.OnLocationChanged -= OnLocationChanges;
+    }
+}

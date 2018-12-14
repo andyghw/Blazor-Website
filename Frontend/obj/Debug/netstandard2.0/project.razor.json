@@ -1,0 +1,17 @@
+{
+  "ProjectFilePath": "d:\\Study\\GuoHanwen\\Master\\Info6250\\FinalProject\\Frontend\\Frontend.csproj",
+  "TargetFramework": "netstandard2.0",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "Blazor-0.1",
+    "LanguageVersion": "Experimental",
+    "Extensions": [
+      {
+        "ExtensionName": "Blazor.AngleSharp-0.1"
+      },
+      {
+        "ExtensionName": "Blazor-0.1"
+      }
+    ]
+  }
+}

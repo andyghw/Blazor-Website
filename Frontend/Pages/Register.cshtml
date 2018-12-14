@@ -1,0 +1,29 @@
+﻿@page "/register"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+
+<div class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+    <label for="username" class="sr-only">Username</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus bind="@username" />
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus bind="@email" />
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required bind="@password" />
+    <button class="btn btn-lg btn-primary btn-block" onclick="@register">Sign up</button>
+</div>
+
+@functions{
+    [Parameter]
+    private string username { set; get; }
+    [Parameter]
+    private string email { set; get; }
+    [Parameter]
+    private string password { set; get; }
+
+    public async Task register()
+    {    
+        await Http.PostJsonAsync("http://localhost:5000/api/Viewer/Register?username=" + username + "&password=" + password + "&email=" + email, null);
+        UriHelper.NavigateTo("/");
+    }
+}

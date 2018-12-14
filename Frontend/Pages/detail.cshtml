@@ -1,0 +1,165 @@
+﻿@page "/movie/{Title}"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+@inject Blazored.Storage.ILocalStorage localStorage
+
+@if (movie == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="movie/@movie.Title">@movie.Title</a>
+                    </h3>
+                    <br>
+                    <strong class="d-inline-block mb-2 text-primary">IMDB Rating: @movie.imdbRating</strong>
+                    Released:<br>
+                    <p>@movie.Released</p>
+                    Rated:<br>
+                    <p>@movie.Rated</p>
+                    Genre:<br>
+                    <p>@movie.Genre</p>
+                    Director:<br>
+                    <p>@movie.Director</p>
+                    Writer:<br>
+                    <p>@movie.Writer</p>
+                    Language:<br>
+                    <p>@movie.Language</p>
+                    Country:<br>
+                    <p>@movie.Country</p>
+                    Awards:<br>
+                    <p>@movie.Awards</p>
+                    Type:<br>
+                    <p>@movie.Type</p>
+                    Actors:<br>
+                    <p>@movie.Actors</p>
+                    Plot:<br>
+                    <p>@movie.Plot</p>
+                    Website: <a href="@movie.Website" target="_blank">@movie.Website</a>
+                    <button class="btn btn-primary" id="searchTheaters" onclick="@CallJSMethod">Check nearby theaters</button>
+                </div>
+                <img class="card-img-right flex-auto d-none d-lg-block" src="@movie.Poster" width="200" height="300">
+            </div>
+            <div class="row">
+                <div id="map" class="col-md-6" style="height: 400px;"></div>
+                <div id="places" class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <button class="btn btn-primary col-md-6" id="more">More</button>
+            </div>
+        </div>
+    </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm comments">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
+        @foreach (var comment in comments)
+        {
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <img src="http://www.icons101.com/icon_png/size_512/id_29125/tomato.png" width="32" height="32" alt="" class="mr-2 rounded">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-gray-dark" style="font-size:30px; color:blue">@@@comment.username</strong>
+                    </div>
+                    <br>
+                    <span class="d-block" style="font-size:20px; color:black">@comment.text</span>'
+                    <br>
+                    <span class="d-block" style="font-size:25px">Rating: @comment.rating</span>
+                    <br>
+                    <span class="d-block">Date: @comment.createDate.ToString("d")</span>
+                </div>
+            </div>
+        }
+        <br>
+        @if (username != null && !username.Equals(""))
+        {
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">New Comment</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" value="@username" required readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="moviename">Moviename</label>
+                        <input type="text" class="form-control" id="moviename" value="@movie.Title" required readonly>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Comment">Comment</label>
+                    <textarea type="text" class="form-control" id="comment" placeholder="Leave your comment here." required bind="@text" />
+                    <div class="invalid-feedback">
+                        Please enter comment.
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="Rating">Rating</label>
+                    <select class="custom-select d-block w-100" id="rating" required bind="@rating">
+                        <option value="">Choose...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a Rating.
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" onclick="@AddComment">Add Comment</button>
+            </div>
+        }
+    </div>
+}
+
+@functions{
+    [Parameter]
+    private string Title { get; set; }
+    private Movie movie;
+    private List<Comment> comments;
+    private string username;
+    private Comment comment;
+    private string text;
+    private string rating;
+
+    protected override async Task OnInitAsync()
+    {
+        Debug.WriteLine(Title);
+        movie = await Http.GetJsonAsync<Movie>("http://www.omdbapi.com/?t=" + Title + "&apikey=1342bb");
+        var response = await Http.GetAsync("http://localhost:5000/api/Comments/GetCommentsByM/" + movie.Title);
+        var str = await response.Content.ReadAsStringAsync();
+        if (str != null)
+        {
+            comments = Json.Deserialize<List<Comment>>(str);
+        }
+        username = await localStorage.GetItem<string>("username");
+    }
+
+    public async Task AddComment()
+    {
+        comment = new Comment()
+        {
+            username = username,
+            movieName = movie.Title,
+            text = text,
+            rating = double.Parse(rating)
+        };
+        await Http.PostJsonAsync("http://localhost:5000/api/Comments/AddComment", comment);
+        UriHelper.NavigateTo("/");
+        UriHelper.NavigateTo("/movie/"+movie.Title);
+    }
+
+    protected void CallJSMethod()
+    {
+        JSRuntime.Current.InvokeAsync<bool>("JSMethod");
+    }
+}
+
